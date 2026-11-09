@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Account, billing or trading questions
+    url: mailto:support@pipsocket.com
+    about: Questions about your Pipsocket account go to support, not to this repository.
+  - name: MCP server documentation
+    url: https://docs.pipsocket.com/mcp
+    about: How the server works, every tool, and its errors.
