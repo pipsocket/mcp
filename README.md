@@ -26,8 +26,11 @@ Full documentation: [MCP server](https://docs.pipsocket.com/mcp),
   adjusted, split, retried or confirmed on the way, and Pipsocket sets no risk limits of its own.
 - **The answer is the REST answer**: its status, its `Retry-After` and its body. A `2xx` never means
   filled: the body's `state` says what happened.
-- **Trades are safe to retry** with an `idempotency_key`, by the same rules as the REST API's
-  `Idempotency-Key`. See [MCP retries and errors](https://docs.pipsocket.com/mcp-errors).
+- **Trades are safe to retry with the same `idempotency_key`**, by the same rules as the REST API's
+  `Idempotency-Key`. Choose a new key for each trade you mean to make. Sent again with the same key, a
+  trade returns the first request instead of trading twice. A `202` (`pending` or `unknown`) is never
+  sent again: follow it with `get_request`. A new key means a new trade. Which answers take the same
+  key, which need a new one and which mean stop: [MCP retries and errors](https://docs.pipsocket.com/mcp-errors#retrying-a-trade).
 
 > [!WARNING]
 > Pipsocket doesn't ask you to confirm a trade. Tools that change things are marked so, and your app

@@ -59,5 +59,5 @@ And this prints the private key in hex, for `mcp-publisher login`:
 openssl pkey -in key.pem -noout -text | grep -A3 "priv:" | tail -n +2 | tr -d ' :\n'
 ```
 
-When the key is replaced, remove the old TXT record: the registry tries a stale one first and the
-sign-in fails.
+When the key is replaced, remove the old TXT record. The registry accepts a sign-in from any key
+published in a TXT record, so an old record left in place keeps the old key able to publish.
